@@ -1,0 +1,83 @@
+﻿body {
+    margin: 0 5%;
+    padding: 0;
+    line-height:2em;
+    text-align:center;
+}
+
+.menu {
+    margin: 0px auto;
+    width: 650px;
+}
+
+    .menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .menu ul li {
+            position: relative;
+            float: left;
+            z-index:1100;
+        }
+
+            .menu ul li a, .menu ul li a:visited {
+                display: block;
+                text-align: center;
+                text-decoration: none;
+                width: 104px;
+                height: 30px;
+                color: white;
+                border: 1px solid #fff;
+                border-width: 1px 1px 0 0;
+                background: #c11313;
+               
+                line-height: 30px;
+                font-size: 16px;
+            }
+            /* make the dropdown ul invisible */
+            .menu ul li ul {
+                display: none;
+            }
+
+            /* specific to non IE browsers */
+            /* set the background and foreground color of the main menu li on hover */
+            .menu ul li:hover a {
+                color: #fff;
+                background: #c11313;
+            }
+            /* make the sub menu ul visible and position it beneath the main menu list item */
+            .menu ul li:hover ul {
+                display: block;
+                position: absolute;
+                z-index:1100;
+                top: 31px;
+                left: 0;
+                width: 105px;
+            }
+                /* style the background and foreground color of the submenu links */
+                .menu ul li:hover ul li a {
+                    display: block;
+                    background: #c11313;
+                    color: white;
+                    font-weight: bold;
+                }
+                    /* style the background and forground colors of the links on hover */
+                    .menu ul li:hover ul li a:hover {
+                        background: #c11313;
+                        color: #000;
+                    }
+                     table {
+                         width:100%;
+            border-collapse: collapse;
+            margin:10px 0;
+        }
+
+            table tr td {
+                padding: 5px;
+                border: 1px solid black;
+                text-align: center;
+                word-break: break-all;
+                word-wrap: break-word;
+            }

@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MainNav.master.cs" Inherits="MainNav" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="MainStyle.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="menu">
+            <ul>
+                <li><a class="hide" href="/Purch/list.aspx">---</a>
+                    <ul>
+                        <li><a class="hide" href="/Purch/list.aspx">---</a></li>
+                        <li><a class="hide" href="/Purch/addpur.aspx">增加记录</a></li>
+                    </ul>
+                </li>
+                <li><a class="hide" href="/technology/list_a.aspx">技术部</a>
+                    <ul>
+                        <li><a class="hide" href="/technology/list_a.aspx">产品中心</a></li>
+                        <li><a class="hide" href="/technology/customerADD.aspx">客户管理</a></li>
+                        <li><a class="hide" href="/technology/productADD.aspx">产品管理</a></li>
+                        <li><a class="hide" href="/system/log.aspx">系统日志</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="hide" href="/machine/machinelist.aspx">设备管理</a>
+                    <ul>
+                        <li><a class="hide" href="/machine/machinelist.aspx">设备台账</a></li>
+                        <li><a class="hide" href="/machine/fix.aspx">保养计划</a></li>
+                        <li><a class="hide" href="/machine/machineAdd.aspx">设备新增</a></li>
+                        <li><a class="hide" href="/machine/guzhangbaoxiu.aspx">故障报修</a></li>
+                        <li><a class="hide" href="/machine/weixiuchaxun.aspx">维修查询</a></li>
+                        <li><a class="hide" href="/machine/machinefixedit.aspx">设备保养</a></li>
+                    </ul>
+
+                </li>
+
+                <li><a class="hide" href="/components/componentslist.aspx">配件管理</a>
+                    <ul>
+                        <li><a class="hide" href="/components/componentslist.aspx">库存查询</a></li>
+                        <li><a class="hide" href="/components/storebase.aspx">新增物资</a></li>
+                        <li><a class="hide" href="/components/compentedit.aspx">修改物资</a></li>
+                        <li><a class="hide" href="/components/componentsdev.aspx">操作流水</a></li>
+                        <li><a class="hide" href="/components/anquankucun.aspx">库存报警</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="hide" href="/cap/capStruct.aspx">帽盖一览</a>
+                    <ul>
+                        <li><a href="/cap/capStruct.aspx" title="帽盖清单">帽盖图谱</a></li>
+                        <li><a href="/cap/Cap.aspx" title="帽盖浏览">帽盖查看</a></li>
+                        <li><a href="/cap/capAdd.aspx" title="增加帽盖">帽盖增加</a></li>
+                        <li><a href="/cap/CapAddImg.aspx" title="帽盖图片">帽盖图片</a></li>
+                    </ul>
+                </li>
+                <li><a class="hide" href="/other/Default.aspx">辅助工具</a>
+                    <ul>
+                        <li><a class="hide" href="/other/Default.aspx">容量纸箱</a></li>
+                        <li><a class="hide" href="/other/web.aspx">片材参考</a></li>
+                        <li><a class="hide" href="/other/weblength.aspx">卷径长度</a></li>
+                        <li><a class="hide" href="/other/cartoon.aspx">纸箱高度</a></li>
+                        <li><a class="hide" href="/other/banchangchishu.aspx">版长齿数</a></li>
+                        <li><a class="hide" href="/other/pcs.aspx">装箱支数</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div style="clear: both;"></div>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
