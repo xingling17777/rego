@@ -30,7 +30,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Button ID="Button1" runat="server" Text="新建文件夹……" /><asp:Button ID="Button2" runat="server" Text="新建页面……" />
+        <asp:Button ID="Button1" runat="server" Text="新建文件夹……" OnClick="Button1_Click" /><asp:Button ID="Button2" runat="server" Text="新建页面……" OnClick="Button2_Click" />
         <hr />
         <asp:Table ID="Table1" runat="server"></asp:Table>
       

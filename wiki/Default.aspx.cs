@@ -12,9 +12,9 @@ public partial class wiki_Default : System.Web.UI.Page
 
     protected void finder(string pathFile)
     {
-        if(Directory.Exists(Server.MapPath("./" + pathFile)))
+        if(Directory.Exists(pathFile))
         {
-            string[] dir = Directory.GetDirectories(Server.MapPath("./" + pathFile));
+            string[] dir = Directory.GetDirectories( pathFile);
             foreach (string s in dir)
             {
                 TableRow row1 = new TableRow();
@@ -57,5 +57,15 @@ public partial class wiki_Default : System.Web.UI.Page
             path = Request["path"].ToString();
         }
         this.finder(path);
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("/wiki/edit.aspx?path="+ Server.MapPath("" + pathFile));
     }
 }
