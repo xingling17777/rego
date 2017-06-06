@@ -12,7 +12,7 @@ public partial class wiki_edit : System.Web.UI.Page
     {
         if (Request["path"] != null)
         {
-            if(File.Exists(Request["path"].ToString()))
+            if(File.Exists(Server.MapPath(Request["path"].ToString())))
             {
                 return true;
             }
@@ -28,7 +28,7 @@ public partial class wiki_edit : System.Web.UI.Page
     {
         if(fileexist())
         {
-            FileStream fs = new FileStream(Request["path"].ToString(),FileMode.Open);
+            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()),FileMode.Open);
             StreamReader sr = new StreamReader(fs);
 
             content1.Value = sr.ReadToEnd();
@@ -39,9 +39,15 @@ public partial class wiki_edit : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
+        if(TextBox1.Text=="")
+        {
+            Response.Write("<script language=javascript>alert('请输入页面标题！')</script>");
+            TextBox1.Focus();
+            return;
+        }
         if(fileexist())
         {
-            FileStream fs = new FileStream(Request["path"].ToString(), FileMode.Open);
+            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()), FileMode.Open);
             StreamWriter sw = new StreamWriter(fs);
             sw.Write(content1.Value.ToString());
             sw.Close();
@@ -50,12 +56,12 @@ public partial class wiki_edit : System.Web.UI.Page
         }
         else
         {
-            FileStream fs = new FileStream(Request["path"].ToString()+"\\"+TextBox1.Text.Trim().ToString()+".wk", FileMode.Create);
+            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString())+ "\\"+TextBox1.Text.Trim().ToString()+".wk", FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
             sw.Write(content1.Value.ToString());
-            sw.Close();
+            sw.Close(); 
             fs.Close();
         }
-        Response.Redirect("/wiki");
+        Response.Redirect("/wiki/Default.aspx?path="+ Request["path"].ToString());
     }
 }
