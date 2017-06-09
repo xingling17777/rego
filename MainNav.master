@@ -15,10 +15,10 @@
     <form id="form1" runat="server">
         <div class="menu">
             <ul>
-                <li><a class="hide" href="/Purch/list.aspx">---</a>
+                <li><a class="hide" href="/wiki/Default.aspx">维基</a>
                     <ul>
-                        <li><a class="hide" href="/Purch/list.aspx">---</a></li>
-                        <li><a class="hide" href="/Purch/addpur.aspx">增加记录</a></li>
+                        <li><a class="hide" href="/wiki/Default.aspx">---</a></li>
+                        
                     </ul>
                 </li>
                 <li><a class="hide" href="/technology/list_a.aspx">技术部</a>

@@ -11,10 +11,15 @@
         div{
             text-align:center;
         }
+        h3{
+            display:inline-block;
+            text-decoration:underline;
+            font-style:italic;
+        }
        table {
-                         width:100%;
+            width:100%;
             border-collapse: collapse;
-            margin:10px 0;
+            margin-left:10px;
         }
 
             table tr td {
@@ -30,7 +35,10 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:Button ID="Button1" runat="server" Text="新建文件夹……" OnClick="Button1_Click" /><asp:Button ID="Button2" runat="server" Text="新建页面……" OnClick="Button2_Click" />
+        <div style="padding-left:50px;float:left;">
+        <asp:Literal ID="Literal1" runat="server"></asp:Literal></div>
+       <div style="float:right;padding-right:50px;"> <asp:Button ID="Button1" runat="server" Text="新建文件夹……" OnClick="Button1_Click" /><asp:Button ID="Button2" runat="server" Text="新建页面……" OnClick="Button2_Click" /></div>
+        <div style="clear:both;"></div>
         <hr />
         <asp:Table ID="Table1" runat="server"></asp:Table>
       

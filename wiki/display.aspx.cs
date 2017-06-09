@@ -10,16 +10,26 @@ public partial class wiki_display : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request["path"] != null) { 
-        if (File.Exists(Server.MapPath(Request["path"].ToString())))
+        if (Request["path"] != null)
         {
-            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()), FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
+            string[] abc = Request["path"].ToString().Split('/');
+            Literal1.Text = "当前位于：-><a href=/wiki/Default.aspx><h3 style='display:inline-block;'>Wiki根目录</h3></a>";
+            string tem = "-><a href=/wiki/Default.aspx?path=./rego";
+            for (int i = 2; i < abc.Length-1; i++)
+            {
+                Literal1.Text += (tem + "/" + abc[i] + "><h3 style='display:inline-block;'>" + abc[i] + "</h3></a>");
+                tem += "/" + abc[i];
+            }
+            Literal1.Text += "<hr />";
+            if (File.Exists(Server.MapPath(Request["path"].ToString())))
+            {
+                FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()), FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
 
-           Literal1.Text= sr.ReadToEnd();
-            sr.Close();
-            fs.Close();
-        }
+                Literal1.Text += sr.ReadToEnd();
+                sr.Close();
+                fs.Close();
+            }
         }
         else
         {
