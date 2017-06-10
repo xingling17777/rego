@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="edit.aspx.cs" Inherits="wiki_edit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" validateRequest="false"  CodeFile="edit.aspx.cs" Inherits="wiki_edit" %>
 
 <!DOCTYPE html>
 
@@ -14,23 +14,25 @@
 	<script>
 		KindEditor.ready(function(K) {
 			var editor1 = K.create('#content1', {
-				cssPath : '../plugins/code/prettify.css',
-				uploadJson : '../asp.net/upload_json.ashx',
-				fileManagerJson : '../asp.net/file_manager_json.ashx',
+			    cssPath: '/kindeditor/plugins/code/prettify.css',
+			    uploadJson: '/kindeditor/asp.net/upload_json.ashx',
+			    fileManagerJson: '/kindeditor/asp.net/file_manager_json.ashx',
 				allowFileManager : true,
 				afterCreate : function() {
 					var self = this;
 					K.ctrl(document, 13, function() {
 						self.sync();
-						K('form[name=example]')[0].submit();
+						K('form[name=form1]')[0].submit();
 					});
 					K.ctrl(self.edit.doc, 13, function() {
 						self.sync();
-						K('form[name=example]')[0].submit();
+						K('form[name=form1]')[0].submit();
 					});
-				}
-			});
+					
+				}});
 			prettyPrint();
+		    
+			
 		});
 	</script>
     <link rel="stylesheet" type="text/css" href="../MainStyle.css" />

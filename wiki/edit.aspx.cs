@@ -12,7 +12,7 @@ public partial class wiki_edit : System.Web.UI.Page
     {
         if (Request["path"] != null)
         {
-            if(File.Exists(Server.MapPath(Request["path"].ToString())))
+            if (File.Exists(Server.MapPath(Request["path"].ToString())))
             {
                 return true;
             }
@@ -26,42 +26,53 @@ public partial class wiki_edit : System.Web.UI.Page
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(fileexist())
+        if (!IsPostBack)
         {
-            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()),FileMode.Open);
-            StreamReader sr = new StreamReader(fs);
-
-            content1.Value = sr.ReadToEnd();
-            sr.Close();
-            fs.Close();
+            if (fileexist())
+            {
+                FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()), FileMode.Open);
+                StreamReader sr = new StreamReader(fs);
+                TextBox1.Text = Path.GetFileNameWithoutExtension(Server.MapPath(Request["path"].ToString()));
+                content1.Value = sr.ReadToEnd();
+                sr.Close();
+                fs.Close();
+            }
+            if (Request["path"] == null)
+            {
+                Response.Redirect("/wiki/Default.aspx");
+            }
         }
+
     }
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        if(TextBox1.Text=="")
+        if (TextBox1.Text == "")
         {
             Response.Write("<script language=javascript>alert('请输入页面标题！')</script>");
             TextBox1.Focus();
             return;
         }
-        if(fileexist())
+        if (fileexist())
         {
             FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()), FileMode.Open);
             StreamWriter sw = new StreamWriter(fs);
+            //sw.Write(Server.HtmlEncode(content1.Value.ToString()));
             sw.Write(content1.Value.ToString());
+
             sw.Close();
             fs.Close();
 
         }
         else
         {
-            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString())+ "\\"+TextBox1.Text.Trim().ToString()+".wk", FileMode.Create);
+            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()) + "\\" + TextBox1.Text.Trim().ToString() + ".wk", FileMode.Create);
             StreamWriter sw = new StreamWriter(fs);
+            //sw.Write(Server.HtmlEncode(content1.Value.ToString()));
             sw.Write(content1.Value.ToString());
-            sw.Close(); 
+            sw.Close();
             fs.Close();
         }
-        Response.Redirect("/wiki/Default.aspx?path="+ Request["path"].ToString());
+        Response.Redirect("/wiki/Default.aspx?path=" + Request["path"].ToString());
     }
 }

@@ -68,13 +68,15 @@
                         background: #c11313;
                         color: #000;
                     }
-                     table {
+                     
+                    table {
                          width:100%;
-            border-collapse: collapse;
+            
             margin:10px 0;
         }
 
             table tr td {
+                border-collapse: collapse;
                 padding: 5px;
                 border: 1px solid black;
                 text-align: center;

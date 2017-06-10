@@ -14,12 +14,15 @@ public partial class wiki_display : System.Web.UI.Page
         {
             string[] abc = Request["path"].ToString().Split('/');
             Literal1.Text = "当前位于：-><a href=/wiki/Default.aspx><h3 style='display:inline-block;'>Wiki根目录</h3></a>";
+            
             string tem = "-><a href=/wiki/Default.aspx?path=./rego";
             for (int i = 2; i < abc.Length-1; i++)
             {
                 Literal1.Text += (tem + "/" + abc[i] + "><h3 style='display:inline-block;'>" + abc[i] + "</h3></a>");
                 tem += "/" + abc[i];
             }
+            Literal1.Text += "<a style='float:right;display:inline-block;' href=/wiki/edit.aspx?path=" + Request["path"].ToString()+">编辑当前页面</a>";
+         
             Literal1.Text += "<hr />";
             if (File.Exists(Server.MapPath(Request["path"].ToString())))
             {
