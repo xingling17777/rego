@@ -25,6 +25,7 @@
             table tr td {
                 padding: 5px;
                 border-bottom: 1px solid black;
+                /*border: 1px solid black;*/
                 text-align: center;
                 word-break: break-all;
                 word-wrap: break-word;

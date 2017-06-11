@@ -27,16 +27,27 @@ public partial class wiki_Default : System.Web.UI.Page
                 lbt.PostBackUrl = "/wiki/Default.aspx?path=" + pathFile + "/" + Path.GetFileName(s);
                 lbt.Text = Path.GetFileName(s);
                 cell2.Controls.Add(lbt);
-                TableCell cell3 = new TableCell();
+                TableCell cell13 = new TableCell();
+                TextBox txtBox1 = new TextBox();
+                txtBox1.ID = "dir" + lbt.Text.ToString();
+                txtBox1.Visible = false;
+                Button btn2 = new Button();
+                btn2.Text = "重命名当前目录";
+                btn2.CommandName = "btnName";
+                btn2.CommandArgument = s;
+                btn2.Command += new CommandEventHandler(btn2_Click);
+                cell13.Controls.Add(txtBox1);
+                cell13.Controls.Add(btn2);
+                TableCell cell4 = new TableCell();
                 Button btn1 = new Button();
                 btn1.Text = "删除目录";
                 btn1.CommandName = "btnName";
                 btn1.CommandArgument = s;
                 btn1.Command += new CommandEventHandler(btn_Click);
-                cell3.Controls.Add(btn1);                           
+                cell4.Controls.Add(btn1);                           
                 row1.Cells.Add(cell1);
                 row1.Cells.Add(cell2);
-                row1.Cells.Add(cell3);
+                row1.Cells.Add(cell4);
                 Table1.Rows.Add(row1);
             }
             string[] fil = Directory.GetFiles(Server.MapPath(pathFile));
@@ -76,6 +87,11 @@ public partial class wiki_Default : System.Web.UI.Page
 
 
     }
+    public void btn2_Click(object sender, CommandEventArgs e)
+    {
+        if()
+    }
+
     public void btn_Click(object sender,CommandEventArgs e)
     {
         if(Directory.Exists(e.CommandArgument.ToString()))
