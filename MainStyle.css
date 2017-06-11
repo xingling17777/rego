@@ -75,7 +75,7 @@
             margin:10px 0;
         }
 
-            table tr td {
+            table,tr,td {
                 border-collapse: collapse;
                 padding: 5px;
                 border: 1px solid black;

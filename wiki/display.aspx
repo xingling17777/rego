@@ -7,6 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
   <link rel="stylesheet" type="text/css" href="../MainStyle.css" />
+    <style type="text/css">
+        body{
+            text-align:left;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">

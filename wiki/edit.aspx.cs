@@ -55,14 +55,27 @@ public partial class wiki_edit : System.Web.UI.Page
         }
         if (fileexist())
         {
-            FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()), FileMode.Open);
-            StreamWriter sw = new StreamWriter(fs);
-            //sw.Write(Server.HtmlEncode(content1.Value.ToString()));
-            sw.Write(content1.Value.ToString());
+            if (TextBox1.Text == Path.GetFileNameWithoutExtension(Server.MapPath(Request["path"].ToString())))
+            {
+                FileStream fs = new FileStream(Server.MapPath(Request["path"].ToString()), FileMode.Open);
+                StreamWriter sw = new StreamWriter(fs);
+                //sw.Write(Server.HtmlEncode(content1.Value.ToString()));
+                sw.Write(content1.Value.ToString());
 
-            sw.Close();
-            fs.Close();
+                sw.Close();
+                fs.Close();
 
+            }
+            else
+            {
+                File.Delete(Server.MapPath(Request["path"].ToString()));
+                FileStream fs = new FileStream(Directory.GetParent(Server.MapPath(Request["path"].ToString())) + "\\" + TextBox1.Text.Trim().ToString() + ".wk", FileMode.Create);
+                StreamWriter sw = new StreamWriter(fs);
+                //sw.Write(Server.HtmlEncode(content1.Value.ToString()));
+                sw.Write(content1.Value.ToString());
+                sw.Close();
+                fs.Close();
+            }
         }
         else
         {
