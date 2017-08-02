@@ -89,7 +89,7 @@ public partial class wiki_Default : System.Web.UI.Page
     }
     public void btn2_Click(object sender, CommandEventArgs e)
     {
-        if()
+        
     }
 
     public void btn_Click(object sender,CommandEventArgs e)

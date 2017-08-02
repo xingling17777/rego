@@ -26,6 +26,10 @@ public partial class technology_changeVersion : System.Web.UI.Page
                 {
                     id = Request["id"].ToString();
                 }
+                else
+                {
+                    Response.Redirect("list_a.aspx");
+                }
                 SqlConnection conn = new DataBase().getSqlConnection();
                 SqlCommand cmd = conn.CreateCommand();
                 cmd.CommandText = "select no,version from 成品编码_印刷 where id=" + id;
@@ -37,23 +41,29 @@ public partial class technology_changeVersion : System.Web.UI.Page
                     while (sdr.Read())
                     {
                         version = sdr[1].ToString();
-
-                        cmd.CommandText = "select top 1 version from 成品编码_印刷 order by id desc where no=" + sdr[0].ToString();
+                        string sys = sdr[0].ToString();
+                        sdr.Close();
+                        cmd.CommandText = "select top 1 version from 成品编码_印刷 where no=" + sys+ " order by id desc";
+                        sdr.Close();
                         Label2.Text = ((char)((int)(cmd.ExecuteScalar().ToString().ToCharArray()[0]) + 1)).ToString();
-                        cmd.CommandText = "select customer,name from 成品编码_成品 where id=" + sdr[0].ToString();
+                        cmd.CommandText = "select customer,name from 成品编码_产品 where id=" + sys;
                         SqlDataReader sdrz = cmd.ExecuteReader();
                         while (sdrz.Read())
                         {
                             Product = sdrz[1].ToString();
                             cmd.CommandText = "select name from 成品编码_客户信息 where id=" + sdrz[0].ToString();
+                            sdrz.Close();
                             SqlDataReader ssdr = cmd.ExecuteReader();
                             while (ssdr.Read())
                             {
                                 Customer = ssdr[0].ToString();
+                                
                             }
+                            break;
                         }
 
-                        Label1.Text = version;
+                        Label1.Text = version.Trim();
+                        break;
                         //Label2.Text = ((char)((int)(version.ToString().ToCharArray()[0])+1)).ToString();
                     }
                 }
@@ -63,6 +73,11 @@ public partial class technology_changeVersion : System.Web.UI.Page
                     conn.Close();
                 }
             }
+        }
+        if(Label1.Text.Length!=1)
+        {
+            Response.Write("<script language=javascript>alert('该产品原始版本号错误,请联系管理员处理！')</script>");
+           
         }
     }
     protected void Button1_Click(object sender, EventArgs e)
