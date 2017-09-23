@@ -26,7 +26,7 @@ public partial class other_cartoon : System.Web.UI.Page
                 return;
             }
             ListBox1.Items.Clear();
-            ListBox1.Items.Add("装一层,纸箱为BLC/ALB 620*400*"+((length+8)%10>2?((int)(length+8)/10+1)*10: ((int)(length+8) / 10 ) * 10));
+            ListBox1.Items.Add("装一层,纸箱为BLC/ALB 550*355*"+((length+8)%10>2?((int)(length+8)/10+1)*10: ((int)(length+8) / 10 ) * 10));
             int lemp= (int)((length + 5) * 2 + 20);
             ListBox1.Items.Add("装两层,纸箱为BL3LB 600*400*" +(lemp%10<=2? lemp/10*10:(lemp/10<5? lemp/ 10*10+5:lemp/ 10 *10+ 10)));
             lemp = (int)((length + 5) * 3 + 20);
