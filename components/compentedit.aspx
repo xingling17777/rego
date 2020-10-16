@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/MainNav.master"  CodeFile="compentedit.aspx.cs" Inherits="components_compentedit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="../MainNav.master"  CodeFile="compentedit.aspx.cs" Inherits="components_compentedit" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 </asp:Content>

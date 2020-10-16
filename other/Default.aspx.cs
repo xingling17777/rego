@@ -14,9 +14,15 @@ public partial class _Default : System.Web.UI.Page
             {
                 DropDownList1.Visible = false;
                 Label5.Visible = false;
+                TextBox6.Visible = false;
+                Label7.Visible = false;
+                Label8.Visible = false;
+                TextBox7.Visible = false;
+                TextBox8.Visible = false;
             }
 
-            TextBox5.Text = "";
+            
+            
             DropDownList1.ToolTip = "水的密度为1.0 g/ml\n化妆品的密度为1.06 - 1.08 g/ml\n药膏的密度为1.26 - 1.28 g/ml\n牙膏的密度为1.40 - 1.48 g/ml";
 
         }
@@ -87,38 +93,77 @@ public partial class _Default : System.Web.UI.Page
         }
         catch (Exception ex)
         {
-            Response.Write("<script language='javascript'>alert(请输入数字!)</script>");
+            Response.Write("<script language='javascript'>alert('请输入正确的容量数字!')</script>");
 
             TextBox4.Text = "";
+            return;
         }
         if (radioButton2.Checked == true)
         {
             s *= 28.35;
         }
-
-        TextBox5.Text = "";
-        TextBox5.Text = "推荐以下软管规格：\n";
-        for (int i = 0; i < 管径.Count; i++)
+        double m = Convert.ToDouble(DropDownList1.SelectedItem.Value);
+        if (TextBox6.Text != "")
         {
-            //MessageBox.Show(管径.Items[i].ToString());
-            double n = (Convert.ToDouble(管径[i].ToString()));
-            //MessageBox.Show(comboBox1.SelectedItem.ToString());
-            double m = Convert.ToDouble(DropDownList1.SelectedItem.Value);
-            int len = (int)(4000 * s / (3.14 * n * n * m) + 10 + n);
-            if (len > 216)
+            try
             {
-
-                continue;
+                m = Convert.ToDouble(TextBox6.Text.Trim().ToString());
             }
-
-            TextBox5.Text += "Φ" + 管径[i].ToString() + " * " + len + "mm\n";
+            catch (Exception ex)
+            {
+                Response.Write("<script language='javascript'>alert('输入的密度不正确!')</script>");
+                return;
+            }
         }
+        if (!RadioButton4.Checked)
+        {
+            double a, b;
+            try
+            {
+                a = Convert.ToDouble(TextBox7.Text.Trim().ToString());
+                b = Convert.ToDouble(TextBox8.Text.Trim().ToString());
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script language='javascript'>alert('请输入正确的长轴短轴尺寸!')</script>");
+                TextBox7.Text = "";
+                TextBox8.Text = "";
+                return;
+            }
+            int len = (int)(4000 * s / (3.14 * a * b * m) + 10 + b);
+            TextBox5.Text = "";
+            TextBox5.Text = "推荐的软管长度为：\n" + len;
+        }
+        else
+        {
+            TextBox5.Text = "";
+            TextBox5.Text = "推荐以下软管规格：\n";
+            for (int i = 0; i < 管径.Count; i++)
+            {
+                //MessageBox.Show(管径.Items[i].ToString());
+                double n = (Convert.ToDouble(管径[i].ToString()));
+                //MessageBox.Show(comboBox1.SelectedItem.ToString());
+
+                int len = (int)(4000 * s / (3.14 * n * n * m) + 10 + n);
+                if (len > 216)
+                {
+
+                    continue;
+                }
+
+                TextBox5.Text += "Φ" + 管径[i].ToString() + " * " + len + "mm\n";
+            }
+        }
+
+
     }
     protected void radioButton2_CheckedChanged(object sender, EventArgs e)
     {
         if (radioButton2.Checked)
         {
             DropDownList1.Visible = true;
+            TextBox6.Visible = true;
+            Label9.Visible = true;
             Label5.Visible = true;
             //lstboxx.Items.Add("水的密度为1.0 g/ml\n化妆品的密度为1.06 - 1.08 g/ml\n药膏的密度为1.26 - 1.28 g/ml\n牙膏的密度为1.40 - 1.48 g/ml");
             this.key();
@@ -132,6 +177,9 @@ public partial class _Default : System.Web.UI.Page
             DropDownList1.SelectedIndex = 0;
             DropDownList1.Visible = false;
             Label5.Visible = false;
+            TextBox6.Text = "";
+            TextBox6.Visible = false;
+            Label9.Visible = false;
             this.key();
         }
     }
@@ -142,6 +190,8 @@ public partial class _Default : System.Web.UI.Page
         {
             DropDownList1.Visible = true;
             Label5.Visible = true;
+            TextBox6.Visible = true;
+            Label9.Visible = true;
             this.key();
         }
     }
@@ -161,5 +211,39 @@ public partial class _Default : System.Web.UI.Page
     protected void btnokC_Click(object sender, EventArgs e)
     {
         this.key();
+    }
+
+    protected void RadioButton4_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RadioButton4.Checked)
+        {
+            Label7.Visible = false;
+            Label8.Visible = false;
+            TextBox7.Visible = false;
+            TextBox8.Visible = false;
+            TextBox7.Text = "";
+            TextBox8.Text = "";
+            TextBox5.Text = "";
+        }
+        else
+        {
+            Label7.Visible = true;
+            Label8.Visible = true;
+            TextBox7.Visible = true;
+            TextBox8.Visible = true;
+            TextBox5.Text = "";
+        }
+    }
+
+    protected void RadioButton5_CheckedChanged(object sender, EventArgs e)
+    {
+        if (RadioButton5.Checked)
+        {
+            Label7.Visible = true;
+            Label8.Visible = true;
+            TextBox7.Visible = true;
+            TextBox8.Visible = true;
+            TextBox5.Text = "";
+        }
     }
 }

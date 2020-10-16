@@ -1,4 +1,4 @@
-﻿<%@ Page Title="配件库存查询" Language="C#" MasterPageFile="~/MainNav.master" AutoEventWireup="true" CodeFile="componentslist.aspx.cs" Inherits="components_componentslist" %>
+﻿<%@ Page Title="配件库存查询" Language="C#" MasterPageFile="../MainNav.master" AutoEventWireup="true" CodeFile="componentslist.aspx.cs" Inherits="components_componentslist" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     </asp:Content>

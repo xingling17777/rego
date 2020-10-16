@@ -12,7 +12,7 @@ public partial class wiki_addFol : System.Web.UI.Page
     {
         if(Request["path"]==null)
         {
-            Response.Redirect("/wiki/Default.aspx");
+            Response.Redirect("Default.aspx");
         }
     }
 
@@ -22,6 +22,6 @@ public partial class wiki_addFol : System.Web.UI.Page
         {
             Directory.CreateDirectory(Server.MapPath(Request["path"].ToString()) + "\\" + TextBox1.Text.Trim().ToString());
         }
-        Response.Redirect("/wiki/Default.aspx?path=" + Request["path"].ToString());
+        Response.Redirect("Default.aspx?path=" + Request["path"].ToString());
     }
 }

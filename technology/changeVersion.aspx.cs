@@ -9,13 +9,13 @@ using System.Data.SqlClient;
 
 public partial class technology_changeVersion : System.Web.UI.Page
 {
-    string Customer, Product;
+   static string Customer, Product;
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["userName"] == null)
         {
             Session["url"] = Request.Url.ToString();
-           Response.Redirect("/user/login.aspx");
+           Response.Redirect("../user/login.aspx");
         }
         else
         {
@@ -30,8 +30,10 @@ public partial class technology_changeVersion : System.Web.UI.Page
                 {
                     Response.Redirect("list_a.aspx");
                 }
+              
                 SqlConnection conn = new DataBase().getSqlConnection();
                 SqlCommand cmd = conn.CreateCommand();
+                
                 cmd.CommandText = "select no,version from 成品编码_印刷 where id=" + id;
                 try
                 {
@@ -51,7 +53,7 @@ public partial class technology_changeVersion : System.Web.UI.Page
                         while (sdrz.Read())
                         {
                             Product = sdrz[1].ToString();
-                            cmd.CommandText = "select name from 成品编码_客户信息 where id=" + sdrz[0].ToString();
+                            cmd.CommandText = "select name from 客户信息 where id=" + sdrz[0].ToString();
                             sdrz.Close();
                             SqlDataReader ssdr = cmd.ExecuteReader();
                             while (ssdr.Read())
@@ -89,16 +91,36 @@ public partial class technology_changeVersion : System.Web.UI.Page
         }
         SqlConnection conn = new DataBase().getSqlConnection();
             SqlCommand cmd = conn.CreateCommand();
-        if(RadioButton1.Checked==true)
+        if (CheckBox1.Checked == true)
+        {
+            cmd.CommandText = "update 成品编码_印刷 set 样板=-1,菲林=-1,树脂版=-1,片材=-1,彩稿=-1,状态=-1,存放库位='',存放序号='' where id=" + id;
+            try
+            {
+                conn.Open();
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    cmd.CommandText = "insert into 系统日志 values ('" + Session["userName"].ToString() + "','" + System.DateTime.Now.ToShortDateString() + "','将 [" + Customer + "] 的 [" + Product + "]-版本 [" + Label1.Text.ToString() + "] 已作废!')";
+                    cmd.ExecuteNonQuery();
+                    Response.Write("<script language=javascript>alert('报废申请已提交！')</script>");
+                }
+            }
+            catch (Exception ey) { }
+            finally
+            {
+                conn.Close();
+                Response.Redirect("list_a.aspx");
+            }
+                    }
+        if (RadioButton1.Checked==true)
         {
             
-            cmd.CommandText = "update 成品编码_印刷 set version='" + Label2.Text + "',样板=-1,菲林=-1,树脂版=-1,片材=-1,彩稿=-1 where id=" + id;
+            cmd.CommandText = "update 成品编码_印刷 set version='" + Label2.Text + "',样板=-1,菲林=-1,树脂版=-1,片材=-1,彩稿=-1,存放库位='',存放序号='' where id=" + id;
             try
             {
                 conn.Open();
                 if(cmd.ExecuteNonQuery()==1)
                 {
-                    cmd.CommandText = "insert into 系统日志 values ('" + Session["userName"].ToString() + "','" + System.DateTime.Now.ToShortDateString() + "','将" + Customer + "的" + Product + "-版本" + Label1.Text.ToString()+ "改为"+Label2.Text.ToString()+"且旧版本已作废!')";
+                    cmd.CommandText = "insert into 系统日志 values ('" + Session["userName"].ToString() + "','" + System.DateTime.Now.ToShortDateString() + "','将 [" + Customer + "] 的 [" + Product + "]-版本 [" + Label1.Text.ToString()+ "] 改为 ["+Label2.Text.ToString()+"] 且旧版本已作废!')";
                     cmd.ExecuteNonQuery();
                     Response.Write("<script language=javascript>alert('版本更新已提交！')</script>");
                 }
@@ -120,7 +142,7 @@ public partial class technology_changeVersion : System.Web.UI.Page
                 cmd.CommandText = "insert into 成品编码_印刷 (no,version,样板,菲林,树脂版,片材,彩稿) values (" + no + ",'"+Label2.Text+ "',-1,-1,-1,-1,-1)";
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                cmd.CommandText = "insert into 系统日志 values ('" + Session["userName"].ToString() + "','" + System.DateTime.Now.ToShortDateString() + "','将" + Customer + "的" + Product + "-版本" + Label1.Text.ToString() + "改为" + Label2.Text.ToString() + "且旧版本未作废!')";
+                cmd.CommandText = "insert into 系统日志 values ('" + Session["userName"].ToString() + "','" + System.DateTime.Now.ToShortDateString() + "','将 [" + Customer + "] 的 [" + Product + "] -版本 [" + Label1.Text.ToString() + "] 改为 [" + Label2.Text.ToString() + "] 且旧版本未作废!')";
                 cmd.ExecuteNonQuery();
                 Response.Write("<script language=javascript>alert('版本更新已提交！')</script>");
             }

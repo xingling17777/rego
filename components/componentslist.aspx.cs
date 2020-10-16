@@ -179,7 +179,7 @@ public partial class components_componentslist : System.Web.UI.Page
                 row.Cells.Add(k5);
                 TableCell k6 = new TableCell();
                 LinkButton linkbtn = new LinkButton();
-                linkbtn.PostBackUrl = "/components/list.aspx?id=" + sdr[0].ToString();
+                linkbtn.PostBackUrl = "./list.aspx?id=" + sdr[0].ToString();
                 linkbtn.Text = "查看流水";
                 k6.Controls.Add(linkbtn);
                 k6.Wrap = true;
@@ -304,7 +304,7 @@ public partial class components_componentslist : System.Web.UI.Page
         if (Session["userName"] == null)
         {
             Session["url"] = Request.Url.ToString();
-            Response.Redirect("/user/login.aspx");
+            Response.Redirect("../user/login.aspx");
         }
         HSSFWorkbook workbook = new HSSFWorkbook();
         ISheet sheet = workbook.CreateSheet();

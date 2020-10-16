@@ -39,7 +39,7 @@ public partial class wiki_edit : System.Web.UI.Page
             }
             if (Request["path"] == null)
             {
-                Response.Redirect("/wiki/Default.aspx");
+                Response.Redirect("Default.aspx");
             }
         }
 
@@ -86,6 +86,6 @@ public partial class wiki_edit : System.Web.UI.Page
             sw.Close();
             fs.Close();
         }
-        Response.Redirect("/wiki/Default.aspx?path=" + Request["path"].ToString());
+        Response.Redirect("Default.aspx?path=" + Request["path"].ToString());
     }
 }

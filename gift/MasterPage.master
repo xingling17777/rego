@@ -1,0 +1,32 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="gift_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />   
+<meta name="apple-mobile-web-app-capable" content="yes" />  
+<meta name="format-detection" content="telephone=no" /> 
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body style="line-height:1.5em;">
+    <form id="form1" runat="server">
+        <div>欢迎您，<asp:Label ID="Label1" runat="server" Text=""></asp:Label><br />
+            <a href="Default.aspx">个人中心</a>
+            <a href="giftlist.aspx">库存礼品</a>
+            <a href="giftbase.aspx">新建礼品</a>
+            <a href="giftin.aspx">礼品入库</a>
+            <a href="00">礼品出库</a>
+        </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

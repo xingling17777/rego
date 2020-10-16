@@ -15,56 +15,59 @@
     <form id="form1" runat="server">
         <div class="menu">
             <ul>
-                <li><a class="hide" href="/wiki/Default.aspx">维基</a>
+                <li><a class="hide" href="/other/wiki/Default.aspx">维基</a>
                     <ul>
-                        <li><a class="hide" href="/wiki/Default.aspx?path=./rego/技术部">技术部</a></li>
-                        <li><a class="hide" href="/wiki/Default.aspx?path=./rego/IT">IT</a></li>
+                        <li><a class="hide" href="/other/wiki/Default.aspx?path=./rego/技术部">技术部</a></li>
+                        <li><a class="hide" href="/other/wiki/Default.aspx?path=./rego/IT">IT</a></li>
                     </ul>
                 </li>
-                <li><a class="hide" href="/technology/list_a.aspx">印版管理</a>
+                <li><a class="hide" href="/other/technology/list_a.aspx">印版管理</a>
                     <ul>
-                        <li><a class="hide" href="/technology/list_a.aspx">产品中心</a></li>
-                        <li><a class="hide" href="/technology/customerADD.aspx">客户管理</a></li>
-                        <li><a class="hide" href="/technology/productADD.aspx">产品管理</a></li>
-                        <li><a class="hide" href="/system/log.aspx">系统日志</a></li>
-                    </ul>
-
-                </li>
-                <li><a class="hide" href="/machine/machinelist.aspx">设备管理</a>
-                    <ul>
-                        <li><a class="hide" href="/machine/machinelist.aspx">设备台账</a></li>
-                        <li><a class="hide" href="/machine/fix.aspx">保养计划</a></li>
-                        <li><a class="hide" href="/machine/machineAdd.aspx">设备新增</a></li>
-                        <li><a class="hide" href="/machine/guzhangbaoxiu.aspx">故障报修</a></li>
-                        <li><a class="hide" href="/machine/weixiuchaxun.aspx">维修查询</a></li>
-                        <li><a class="hide" href="/machine/machinefixedit.aspx">设备保养</a></li>
+                        <li><a class="hide" href="/other/technology/list_a.aspx">产品中心</a></li>
+                        <li><a class="hide" href="/other/technology/customerADD.aspx">客户管理</a></li>
+                        <li><a class="hide" href="/other/technology/productADD.aspx">产品管理</a></li>
+                        <li><a class="hide" href="/other/system/log.aspx">系统日志</a></li>
+                        <li><a class="hide" href="/other/technology/lastvisityinban.aspx">日期维护</a></li>
+                        <li><a class="hide" href="/other/technology/selected.aspx">日期筛选</a></li>
                     </ul>
 
                 </li>
-
-                <li><a class="hide" href="/components/componentslist.aspx">配件管理</a>
+                <li><a class="hide" href="/other/machine/machinelist.aspx">设备管理</a>
                     <ul>
-                        <li><a class="hide" href="/components/componentslist.aspx">库存查询</a></li>
-                        <li><a class="hide" href="/components/storebase.aspx">新增物资</a></li>
-                        <li><a class="hide" href="/components/compentedit.aspx">修改物资</a></li>
-                        <li><a class="hide" href="/components/componentsdev.aspx">操作流水</a></li>
-                        <li><a class="hide" href="/components/anquankucun.aspx">库存报警</a></li>
+                        <li><a class="hide" href="/other/machine/machinelist.aspx">设备台账</a></li>
+                        <li><a class="hide" href="/other/machine/fix.aspx">保养计划</a></li>
+                        <li><a class="hide" href="/other/machine/machineAdd.aspx">设备新增</a></li>
+                        <li><a class="hide" href="/other/machine/guzhangbaoxiu.aspx">故障报修</a></li>
+                        <li><a class="hide" href="/other/machine/weixiuchaxun.aspx">维修查询</a></li>
+                        <li><a class="hide" href="/other/machine/machinefixedit.aspx">设备保养</a></li>
                     </ul>
 
                 </li>
-                <li><a class="hide" href="/wiki/Default.aspx?path=./rego/技术部/帽盖">帽盖</a>
+
+                <li><a class="hide" href="/other/components/componentslist.aspx">配件管理</a>
                     <ul>
-                        <li><a href="/wiki/Default.aspx?path=./rego/技术部/帽盖">帽盖</a></li>
+                        <li><a class="hide" href="/other/components/componentslist.aspx">库存查询</a></li>
+                        <li><a class="hide" href="/other/components/storebase.aspx">新增物资</a></li>
+                        <li><a class="hide" href="/other/components/compentedit.aspx">修改物资</a></li>
+                        <li><a class="hide" href="/other/components/componentsdev.aspx">操作流水</a></li>
+                        <li><a class="hide" href="/other/components/anquankucun.aspx">库存报警</a></li>
+                    </ul>
+
+                </li>
+                <li><a class="hide" href="/other/wiki/Default.aspx?path=./rego/技术部/帽盖">帽盖</a>
+                    <ul>
+                        <li><a href="/other/wiki/Default.aspx?path=./rego/技术部/帽盖">帽盖</a></li>
                         
                     </ul>
                 </li>
-                <li><a class="hide" href="/other/Default.aspx">辅助工具</a>
+                <li><a class="hide" href="/other/other/Default.aspx">辅助工具</a>
                     <ul>
-                        <li><a class="hide" href="/other/Default.aspx">容量纸箱</a></li>
-                        <li><a class="hide" href="/wiki/Default.aspx?path=./rego/技术部/片材">片材参考</a></li>
-                        <li><a class="hide" href="/other/weblength.aspx">卷径长度</a></li>
-                        <li><a class="hide" href="/other/cartoon.aspx">纸箱高度</a></li>
-                        <li><a class="hide" href="/other/banchangchishu.aspx">版长齿数</a></li>
+                        <li><a class="hide" href="/other/other/单位用量.aspx">单位用量</a></li>
+                        <li><a class="hide" href="/other/other/Default.aspx">容量纸箱</a></li>
+                        <li><a class="hide" href="/other/wiki/Default.aspx?path=./rego/技术部/片材">片材参考</a></li>
+                        <li><a class="hide" href="/other/other/weblength.aspx">卷径长度</a></li>
+                        <li><a class="hide" href="/other/other/cartoon.aspx">纸箱高度</a></li>
+                        <li><a class="hide" href="/other/other/banchangchishu.aspx">版长齿数</a></li>
                         
                     </ul>
                 </li>

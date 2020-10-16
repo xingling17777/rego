@@ -1,4 +1,4 @@
-﻿<%@ Page Title="注册新用户" Language="C#" MasterPageFile="~/MainNav.master" AutoEventWireup="true" CodeFile="register.aspx.cs" Inherits="user_register" %>
+﻿<%@ Page Title="注册新用户" Language="C#" MasterPageFile="../MainNav.master" AutoEventWireup="true" CodeFile="register.aspx.cs" Inherits="user_register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <style type="text/css">

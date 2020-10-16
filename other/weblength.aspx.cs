@@ -45,7 +45,8 @@ public partial class other_weblength : System.Web.UI.Page
             {
                 length = Math.Sqrt(dia * 4 * wei / 3.14 + DIA * DIA);
             }
-            Label1.Text = (rbtrol.Checked?"片材长度:":"片材外径:")+ length.ToString();
+            
+            Label1.Text = (rbtrol.Checked?"片材长度(m):  ":"卷绕外径(mm):  ")+ length.ToString("f2");
         }
     }
 

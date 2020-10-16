@@ -15,7 +15,7 @@ public partial class technology_printManage : System.Web.UI.Page
         if (Session["userName"] == null)
         {
             Session["url"] = Request.Url.ToString();
-           Response.Redirect("/user/login.aspx");
+           Response.Redirect("../user/login.aspx");
         }
         else
         {
@@ -46,7 +46,7 @@ public partial class technology_printManage : System.Web.UI.Page
                         while(sdrz.Read())
                         {
                             Product = sdrz[1].ToString();
-                            cmd.CommandText = "select name from 成品编码_客户信息 where id=" + sdrz[0].ToString();
+                            cmd.CommandText = "select name from 客户信息 where id=" + sdrz[0].ToString();
                             SqlDataReader ssdr = cmd.ExecuteReader();
                             while (ssdr.Read())
                             {
@@ -73,31 +73,33 @@ public partial class technology_printManage : System.Web.UI.Page
         }
         SqlConnection conn = new DataBase().getSqlConnection();
         SqlCommand cmd = conn.CreateCommand();
-        if (RadioButton3.Checked == false)
+        int yangban = -1, feilin = -1, shuzhi = -1, piancai = -1, caigao = -1;
+        string kuwei="", xuhao="";
+        cmd.CommandText = "select * from 成品编码_印刷 where id=" + Request["id"].ToString();
+
+        try
         {
-            cmd.CommandText = "select * from 成品编码_印刷 where id=" + Request["id"].ToString();
-            int yangban = -1, feilin = -1, shuzhi = -1, piancai = -1, caigao = -1;
-            try
+            conn.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            while (sdr.Read())
             {
-                conn.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                while (sdr.Read())
-                {
-                    yangban = Convert.ToInt32(sdr[3].ToString());
-                    feilin = Convert.ToInt32(sdr[4].ToString());
-                    shuzhi = Convert.ToInt32(sdr[5].ToString());
-                    piancai = Convert.ToInt32(sdr[6].ToString());
-                    caigao = Convert.ToInt32(sdr[7].ToString());
-                }
+                yangban = Convert.ToInt32(sdr[3].ToString());
+                feilin = Convert.ToInt32(sdr[4].ToString());
+                shuzhi = Convert.ToInt32(sdr[5].ToString());
+                piancai = Convert.ToInt32(sdr[6].ToString());
+                caigao = Convert.ToInt32(sdr[7].ToString());
+                kuwei = sdr[9].ToString();
+                xuhao = sdr[10].ToString();
             }
-            catch (Exception ey) { }
-            finally
-            {
-                conn.Close();
-            }
-
-
-            if (RadioButton1.Checked == true)
+        }
+        catch (Exception ey) { }
+        finally
+        {
+            conn.Close();
+        }
+        if (RadioButton3.Checked == false)
+        {    
+if (RadioButton1.Checked == true)
             {
                 if (CheckBox1.Checked == true)
                 {
@@ -142,14 +144,41 @@ public partial class technology_printManage : System.Web.UI.Page
                 {
                     caigao = 1;
                 }
-            }
-
-            cmd.CommandText = "update 成品编码_印刷 set 样板=" + yangban + ",菲林=" + feilin + ",树脂版=" + shuzhi + ",片材=" + piancai + ",彩稿=" + caigao + " where id=" + Request["id"].ToString();
+            }           
         }
         else
-        { 
-        cmd.CommandText = "delete from 成品编码_印刷 where id=" + Request["id"].ToString();
+        {
+            //cmd.CommandText = "delete from 成品编码_印刷 where id=" + Request["id"].ToString();
+            if (CheckBox1.Checked == true)
+            {
+                yangban = -1;
+            }
+            if (CheckBox2.Checked == true)
+            {
+                feilin = -1;
+            }
+            if (CheckBox3.Checked == true)
+            {
+                shuzhi = -1;
+            }
+            if (CheckBox4.Checked == true)
+            {
+                piancai = -1;
+            }
+            if (CheckBox5.Checked == true)
+            {
+                caigao = -1;
+            }
         }
+        if(TextBox1.Text.Trim()!="")
+        {
+            kuwei = TextBox1.Text.Trim().ToString();
+        }
+        if (TextBox2.Text.Trim() != "")
+        {
+            xuhao = TextBox2.Text.Trim().ToString();
+        }
+        cmd.CommandText = "update 成品编码_印刷 set 样板=" + yangban + ",菲林=" + feilin + ",树脂版=" + shuzhi + ",片材=" + piancai + ",彩稿=" + caigao +",存放库位='"+kuwei+"',存放序号='"+xuhao+ "' where id=" + Request["id"].ToString();
         try
         {
             conn.Open();

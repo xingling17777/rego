@@ -18,7 +18,8 @@ public class DataBase
     }
     public SqlConnection getSqlConnection()
     {
-        SqlConnection conn = new SqlConnection("server=192.168.0.18;database=rego;uid=sa;pwd=REgo123456");
+        //SqlConnection conn = new SqlConnection("server=192.168.0.18;database=rego;uid=sa;pwd=hundun");
+        SqlConnection conn = new SqlConnection("server=hds117139411.my3w.com;database=hds117139411_db;uid=hds117139411;pwd=rego123456;MultipleActiveResultSets=true");
         return conn;
        
     }

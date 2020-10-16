@@ -19,12 +19,12 @@ public partial class wiki_Default : System.Web.UI.Page
             {
                 TableRow row1 = new TableRow();
                 TableCell cell1 = new TableCell();
-                cell1.Text = "<img src=/img/folder.png />";
+                cell1.Text = "<img src=../img/folder.png />";
                 cell1.Style.Add("width", "30px");
                 TableCell cell2 = new TableCell();
                 cell2.Style.Add("text-align", "left");
                 LinkButton lbt = new LinkButton();
-                lbt.PostBackUrl = "/wiki/Default.aspx?path=" + pathFile + "/" + Path.GetFileName(s);
+                lbt.PostBackUrl = "Default.aspx?path=" + pathFile + "/" + Path.GetFileName(s);
                 lbt.Text = Path.GetFileName(s);
                 cell2.Controls.Add(lbt);
                 TableCell cell13 = new TableCell();
@@ -59,12 +59,12 @@ public partial class wiki_Default : System.Web.UI.Page
                 }
                 TableRow row2 = new TableRow();
                 TableCell cell21 = new TableCell();
-                cell21.Text = "<img src=/img/page.png />";
+                cell21.Text = "<img src=../img/page.png />";
                 cell21.Style.Add("width", "30px");
                 TableCell cell22 = new TableCell();
                 cell22.Style.Add("text-align", "left");
                 LinkButton lbtn = new LinkButton();
-                lbtn.PostBackUrl = "/wiki/Default.aspx?path=" + pathFile + "/" + Path.GetFileName(s);
+                lbtn.PostBackUrl = "Default.aspx?path=" + pathFile + "/" + Path.GetFileName(s);
                 lbtn.Text=Path.GetFileNameWithoutExtension(s);
                 cell22.Controls.Add(lbtn);
                 TableCell cell23 = new TableCell();
@@ -102,7 +102,7 @@ public partial class wiki_Default : System.Web.UI.Page
         {
             File.Delete(e.CommandArgument.ToString());
         }
-        Response.Redirect("/wiki/Default.aspx?path=" + Request["path"].ToString());
+        Response.Redirect("Default.aspx?path=" + Request["path"].ToString());
     }
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -111,8 +111,8 @@ public partial class wiki_Default : System.Web.UI.Page
             path = Request["path"].ToString();
         }
         string[] abc = path.Split('/');        
-            Literal1.Text = "当前位于：-><a href=/wiki/Default.aspx><h3>Wiki根目录</h3></a>";
-        string tem= "-><a href=/wiki/Default.aspx?path=./rego";
+            Literal1.Text = "当前位于：-><a href=Default.aspx><h3>Wiki根目录</h3></a>";
+        string tem= "-><a href=Default.aspx?path=./rego";
         for (int i=2;i<abc.Length;i++)
         {
             Literal1.Text +=(tem+"/"+abc[i]+"><h3>"+abc[i]+"</h3></a>");
@@ -123,11 +123,11 @@ public partial class wiki_Default : System.Web.UI.Page
 
     protected void Button1_Click(object sender, EventArgs e)
     {
-        Response.Redirect("/wiki/addFol.aspx?path="+path);
+        Response.Redirect("addFol.aspx?path="+path);
     }
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        Response.Redirect("/wiki/edit.aspx?path="+ path);
+        Response.Redirect("edit.aspx?path="+ path);
     }
 }

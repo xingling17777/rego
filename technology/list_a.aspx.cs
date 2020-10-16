@@ -18,16 +18,17 @@ public partial class technology_list_a : System.Web.UI.Page
         if (Session["userName"] == null)
         {
             Session["url"] = Request.Url.ToString();
-            Response.Redirect("/user/login.aspx");
+            Response.Redirect("../user/login.aspx");
         }
         else
         {
             if (!IsPostBack)
             {
                 DropDownList1.Items.Clear();
+                ListBox1.Items.Clear();
                 SqlConnection conn = new DataBase().getSqlConnection();
                 SqlCommand cmd = conn.CreateCommand();
-                cmd.CommandText = "select id,name from 成品编码_客户信息 order by name";
+                cmd.CommandText = "select id,name from 客户信息 order by name";
                 try
                 {
                     conn.Open();
@@ -35,6 +36,7 @@ public partial class technology_list_a : System.Web.UI.Page
                     while (sdr.Read())
                     {
                         DropDownList1.Items.Add(new ListItem(sdr[1].ToString(), sdr[0].ToString()));
+                        ListBox1.Items.Add(new ListItem(sdr[1].ToString(), sdr[0].ToString()));
                     }
                 }
                 catch (Exception ey)
@@ -45,9 +47,9 @@ public partial class technology_list_a : System.Web.UI.Page
                 {
                     conn.Close();
                 }
-                if (DropDownList1.Items.Count > 0)
+                //if (DropDownList1.Items.Count > 0)
                 {
-                    this.Display(DropDownList1.Items[0].Value.ToString());
+                    //this.Display(DropDownList1.Items[0].Value.ToString());
                 }
             }
         }
@@ -62,7 +64,7 @@ public partial class technology_list_a : System.Web.UI.Page
 
         SqlCommand cmd = conn.CreateCommand();
 
-        cmd.CommandText = "select no from 成品编码_客户信息 where id=" + DropDownList1.SelectedValue.ToString();
+        cmd.CommandText = "select no from 客户信息 where id=" + id;
         int customerID = 0;
         try
         {
@@ -100,6 +102,12 @@ public partial class technology_list_a : System.Web.UI.Page
         cell17.Text = "片材";
         TableCell cell18 = new TableCell();
         cell18.Text = "彩稿";
+        TableCell cell181 = new TableCell();
+        cell181.Text = "存放库位";
+        TableCell cell182 = new TableCell();
+        cell182.Text = "自编序号";
+        TableCell cell183 = new TableCell();
+        cell183.Text = "状态";
         TableCell cell19 = new TableCell();
         cell19.Text = "管理";
         TableRow row1 = new TableRow();
@@ -117,9 +125,12 @@ public partial class technology_list_a : System.Web.UI.Page
         row1.Cells.Add(cell16);
         row1.Cells.Add(cell17);
         row1.Cells.Add(cell18);
+        row1.Cells.Add(cell181);
+        row1.Cells.Add(cell182);
+        row1.Cells.Add(cell183);
         row1.Cells.Add(cell19);
         Table1.Rows.Add(row1);
-        cmd.CommandText = "select * from 成品编码_产品 where customer=" + DropDownList1.SelectedValue.ToString();
+        cmd.CommandText = "select * from 成品编码_产品 where customer=" + id;
 
         try
         {
@@ -185,6 +196,12 @@ public partial class technology_list_a : System.Web.UI.Page
                         cell27.Text = (sdz[6].ToString() == "-1" ? "-" : (sdz[6].ToString() == "1" ? "已存档" : "使用中"));
                         TableCell cell28 = new TableCell();
                         cell28.Text = (sdz[7].ToString() == "-1" ? "-" : (sdz[7].ToString() == "1" ? "已存档" : "使用中"));
+                        TableCell cell30 = new TableCell();
+                        cell30.Text = sdz[9].ToString();
+                        TableCell cell31 = new TableCell();
+                        cell31.Text = sdz[10].ToString();
+                        TableCell cell32 = new TableCell();
+                        cell32.Text = (sdz[8].ToString() == "" ? "有效" : "无效");
                         TableCell cell29 = new TableCell();
                         LinkButton btn1 = new LinkButton();
                         btn1.Text = "更改版本";
@@ -212,7 +229,11 @@ public partial class technology_list_a : System.Web.UI.Page
                         row2.Cells.Add(cell26);
                         row2.Cells.Add(cell27);
                         row2.Cells.Add(cell28);
+                        row2.Cells.Add(cell30);
+                        row2.Cells.Add(cell31);
+                        row2.Cells.Add(cell32);
                         row2.Cells.Add(cell29);
+                        
                         Table1.Rows.Add(row2);
                     }
                 }
@@ -234,9 +255,9 @@ public partial class technology_list_a : System.Web.UI.Page
     }
     protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (DropDownList1.SelectedIndex != -1)
+       // if (DropDownList1.SelectedIndex != -1)
         {
-            this.Display(DropDownList1.SelectedValue.ToString());
+           // this.Display(DropDownList1.SelectedValue.ToString());
         }
 
     }
@@ -258,7 +279,7 @@ public partial class technology_list_a : System.Web.UI.Page
         {
             SqlConnection conn = new DataBase().getSqlConnection();
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select no from 成品编码_客户信息 order by name";
+            cmd.CommandText = "select no from 客户信息 order by name";
             ArrayList customerAL = new ArrayList();
 
             try
@@ -300,6 +321,12 @@ public partial class technology_list_a : System.Web.UI.Page
             cell17.Text = "片材";
             TableCell cell18 = new TableCell();
             cell18.Text = "彩稿";
+            TableCell cell181 = new TableCell();
+            cell181.Text = "存放库位";
+            TableCell cell182 = new TableCell();
+            cell182.Text = "自编序号";
+            TableCell cell183 = new TableCell();
+            cell183.Text = "状态";
             TableCell cell19 = new TableCell();
             cell19.Text = "管理";
             TableRow row1 = new TableRow();
@@ -318,6 +345,10 @@ public partial class technology_list_a : System.Web.UI.Page
             row1.Cells.Add(cell16);
             row1.Cells.Add(cell17);
             row1.Cells.Add(cell18);
+            
+            row1.Cells.Add(cell181);
+            row1.Cells.Add(cell182);
+            row1.Cells.Add(cell183);
             row1.Cells.Add(cell19);
             Table1.Rows.Add(row1);
             string customer = keyNO.Substring(0, 3);
@@ -402,7 +433,14 @@ public partial class technology_list_a : System.Web.UI.Page
                             cell27.Text = (sdz[6].ToString() == "-1" ? "-" : (sdz[6].ToString() == "1" ? "已存档" : "使用中"));
                             TableCell cell28 = new TableCell();
                             cell28.Text = (sdz[7].ToString() == "-1" ? "-" : (sdz[7].ToString() == "1" ? "已存档" : "使用中"));
+                            TableCell cell30 = new TableCell();
+                            cell30.Text = sdz[9].ToString();
+                            TableCell cell31 = new TableCell();
+                            cell31.Text = sdz[10].ToString();
+                            TableCell cell32 = new TableCell();
+                            cell32.Text = (sdz[8].ToString() == "" ? "有效" : "无效");
                             TableCell cell29 = new TableCell();
+                          
                             LinkButton btn1 = new LinkButton();
                             btn1.Text = "更改版本";
                             btn1.PostBackUrl = "changeVersion.aspx?id=" + sdz[0].ToString();
@@ -423,12 +461,15 @@ public partial class technology_list_a : System.Web.UI.Page
                             row2.Cells.Add(b1);
                             row2.Cells.Add(b2);
                             row2.Cells.Add(b3);
-                            
+
                             row2.Cells.Add(cell24);
                             row2.Cells.Add(cell25);
                             row2.Cells.Add(cell26);
                             row2.Cells.Add(cell27);
                             row2.Cells.Add(cell28);
+                            row2.Cells.Add(cell30);
+                            row2.Cells.Add(cell31);
+                            row2.Cells.Add(cell32);
                             row2.Cells.Add(cell29);
                             Table1.Rows.Add(row2);
                         }
@@ -452,7 +493,7 @@ public partial class technology_list_a : System.Web.UI.Page
 
             SqlConnection conn = new DataBase().getSqlConnection();
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select no from 成品编码_客户信息 order by name";
+            cmd.CommandText = "select no from 客户信息 order by name";
             ArrayList customerAL = new ArrayList();
 
             try
@@ -494,6 +535,12 @@ public partial class technology_list_a : System.Web.UI.Page
             cell17.Text = "片材";
             TableCell cell18 = new TableCell();
             cell18.Text = "彩稿";
+            TableCell cell181 = new TableCell();
+            cell181.Text = "存放库位";
+            TableCell cell182 = new TableCell();
+            cell182.Text = "自编序号";
+            TableCell cell183 = new TableCell();
+            cell183.Text = "状态";
             TableCell cell19 = new TableCell();
             cell19.Text = "管理";
             TableRow row1 = new TableRow();
@@ -511,6 +558,10 @@ public partial class technology_list_a : System.Web.UI.Page
             row1.Cells.Add(cell16);
             row1.Cells.Add(cell17);
             row1.Cells.Add(cell18);
+            
+            row1.Cells.Add(cell181);
+            row1.Cells.Add(cell182);
+            row1.Cells.Add(cell183);
             row1.Cells.Add(cell19);
             Table1.Rows.Add(row1);
 
@@ -583,6 +634,13 @@ public partial class technology_list_a : System.Web.UI.Page
                             cell27.Text = (sdz[6].ToString() == "-1" ? "-" : (sdz[6].ToString() == "1" ? "已存档" : "使用中"));
                             TableCell cell28 = new TableCell();
                             cell28.Text = (sdz[7].ToString() == "-1" ? "-" : (sdz[7].ToString() == "1" ? "已存档" : "使用中"));
+                            TableCell cell30 = new TableCell();
+                            cell30.Text = sdz[9].ToString();
+                            TableCell cell31 = new TableCell();
+                            cell31.Text = sdz[10].ToString();
+                            TableCell cell32 = new TableCell();
+                            cell32.Text = (sdz[8].ToString() == "" ? "有效" : "无效");
+                           
                             TableCell cell29 = new TableCell();
                             LinkButton btn1 = new LinkButton();
                             btn1.Text = "更改版本";
@@ -604,12 +662,15 @@ public partial class technology_list_a : System.Web.UI.Page
                             row2.Cells.Add(b1);
                             row2.Cells.Add(b2);
                             row2.Cells.Add(b3);
-                            
+
                             row2.Cells.Add(cell24);
                             row2.Cells.Add(cell25);
                             row2.Cells.Add(cell26);
                             row2.Cells.Add(cell27);
                             row2.Cells.Add(cell28);
+                            row2.Cells.Add(cell30);
+                            row2.Cells.Add(cell31);
+                            row2.Cells.Add(cell32);
                             row2.Cells.Add(cell29);
                             Table1.Rows.Add(row2);
                         }
@@ -665,12 +726,17 @@ public partial class technology_list_a : System.Web.UI.Page
         cell10.SetCellValue("片材");
         ICell cell11 = row1.CreateCell(11);
         cell11.SetCellValue("彩稿");
-
+        ICell cell111 = row1.CreateCell(11);
+        cell111.SetCellValue("存放库位");
+        ICell cell112 = row1.CreateCell(11);
+        cell112.SetCellValue("存放序号");
+        ICell cell113 = row1.CreateCell(11);
+        cell113.SetCellValue("状态");
         //数据内容
         //客户信息
         SqlConnection conn = new DataBase().getSqlConnection();
         SqlCommand cmd = conn.CreateCommand();
-        cmd.CommandText = "select * from 成品编码_客户信息";
+        cmd.CommandText = "select * from 客户信息";
         ArrayList customerID = new ArrayList();
         ArrayList customerName = new ArrayList();
         ArrayList customerNO = new ArrayList();
@@ -754,7 +820,13 @@ public partial class technology_list_a : System.Web.UI.Page
                         {
                             ICell cell = row.CreateCell(i);
                             cell.SetCellValue((sdz[i-4].ToString() == "-1" ? "-" : (sdz[i - 4].ToString() == "1" ? "已存档" : "使用中")));
-                        }                      
+                        }
+                        ICell cell221 = row.CreateCell(12);
+                        cell221.SetCellValue(sdz[9].ToString());
+                        ICell cell222 = row.CreateCell(13);
+                        cell222.SetCellValue(sdz[10].ToString());
+                        ICell cell223 = row.CreateCell(14);
+                        cell223.SetCellValue(sdz[8].ToString() == "" ? "有效" : "无效");
                     }
                 }
                 catch (Exception ey) { }
@@ -777,5 +849,61 @@ public partial class technology_list_a : System.Web.UI.Page
         ms.Dispose();
     }
 
-   
+
+
+    protected void ListBox1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        //if (ListBox1.SelectedIndex!=-1)
+        {
+            //this.Display(ListBox1.SelectedValue.ToString());
+        }
+    }
+
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        ListBox1.Items.Clear();
+        SqlConnection conn = new DataBase().getSqlConnection();
+        SqlCommand cmd = conn.CreateCommand();
+        cmd.CommandText = "select id,name from 客户信息 order by name";
+        try
+        {
+            conn.Open();
+            SqlDataReader sdr = cmd.ExecuteReader();
+            while (sdr.Read())
+            {
+                
+                ListBox1.Items.Add(new ListItem(sdr[1].ToString(), sdr[0].ToString()));
+            }
+        }
+        catch (Exception ey)
+        {
+            Response.Write("<script language=text/javascript>alert('客户信息加载失败,请联系管理员!')</script>");
+        }
+        finally
+        {
+            conn.Close();
+        }
+        for(int n=0;n<ListBox1.Items.Count;n++)
+        {
+            if(txtCustomer.Text.ToString()!="")
+            { 
+            if(ListBox1.Items[n].ToString().IndexOf(txtCustomer.Text.Trim().ToString())==-1)
+            {
+                ListBox1.Items.RemoveAt(n);
+                n--;
+            }}
+        }
+        //if (ListBox1.Items.Count > 0)
+        {
+           // this.Display(ListBox1.Items[0].Value.ToString());
+        }
+    }
+
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        if(ListBox1.SelectedIndex!=-1)
+        {
+            this.Display(ListBox1.SelectedValue.ToString());
+        }
+    }
 }

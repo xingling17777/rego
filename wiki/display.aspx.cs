@@ -13,9 +13,9 @@ public partial class wiki_display : System.Web.UI.Page
         if (Request["path"] != null)
         {
             string[] abc = Request["path"].ToString().Split('/');
-            Literal1.Text = "当前位于：-><a href=/wiki/Default.aspx><h3 style='display:inline-block;'>Wiki根目录</h3></a>";
+            Literal1.Text = "当前位于：-><a href=Default.aspx><h3 style='display:inline-block;'>Wiki根目录</h3></a>";
             
-            string tem = "-><a href=/wiki/Default.aspx?path=./rego";
+            string tem = "-><a href=Default.aspx?path=./rego";
             for (int i = 2; i < abc.Length-1; i++)
             {
                 Literal1.Text += (tem + "/" + abc[i] + "><h3 style='display:inline-block;'>" + abc[i] + "</h3></a>");
@@ -36,7 +36,7 @@ public partial class wiki_display : System.Web.UI.Page
         }
         else
         {
-            Response.Redirect("/wiki/Default.aspx");
+            Response.Redirect("Default.aspx");
         }
 
     }

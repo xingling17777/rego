@@ -14,7 +14,7 @@ public partial class Purch_list : System.Web.UI.Page
         if (Session["userName"] == null)
         {
             Session["url"] = Request.Url.ToString();
-            Response.Redirect("/user/login.aspx");
+            Response.Redirect("../user/login.aspx");
         }
         else
         {
@@ -53,7 +53,7 @@ public partial class Purch_list : System.Web.UI.Page
         {
             SqlConnection conn = new DataBase().getSqlConnection();
             SqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = "select id,昵称 from 客户信息 order by 昵称";
+            cmd.CommandText = "select id,name from 客户信息 order by name";
             try
             {
                 if (conn.State != ConnectionState.Open)

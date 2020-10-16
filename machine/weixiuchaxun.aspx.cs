@@ -16,7 +16,7 @@ public partial class machine_weixiuchaxun : System.Web.UI.Page
         if (Session["userName"] == null)
         {
             Session["url"] = Request.Url.ToString();
-            Response.Redirect("/user/login.aspx");
+            Response.Redirect("../user/login.aspx");
         }
         SqlConnection conn = new DataBase().getSqlConnection();
         SqlCommand cmd = conn.CreateCommand();

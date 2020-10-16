@@ -1,4 +1,4 @@
-﻿<%@ Page Title="登录页面" Language="C#" MasterPageFile="~/MainNav.master" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="user_login" %>
+﻿<%@ Page Title="登录页面" Language="C#" MasterPageFile="../MainNav.master" AutoEventWireup="true" CodeFile="login.aspx.cs" Inherits="user_login" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
@@ -27,7 +27,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2" style="color: red; font-style: italic;"><a href="/user/register.aspx">注册新用户?</a></td>
+                <td colspan="2" style="color: red; font-style: italic;"><a href="register.aspx">注册新用户?</a></td>
             </tr>
         </table>
     </div>

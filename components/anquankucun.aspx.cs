@@ -14,7 +14,7 @@ public partial class components_anquankucun : System.Web.UI.Page
         if (Session["userName"] == null)
         {
             Session["url"] = Request.Url.ToString();
-            Response.Redirect("/user/login.aspx");
+            Response.Redirect("../user/login.aspx");
         }
         if (!IsPostBack)
         {
