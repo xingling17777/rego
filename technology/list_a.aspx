@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
-    <table style="width:600px;margin:0 auto;">
+    <table style="width:800px;margin:0 auto;">
         <tr><td>客户关键字</td><td><asp:textbox ID="txtCustomer" runat="server"></asp:textbox></td><td><asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="检索客户" /></td></tr>
         <tr><td>选择客户</td><td><asp:ListBox ID="ListBox1" runat="server" OnSelectedIndexChanged="ListBox1_SelectedIndexChanged"></asp:ListBox></td><td><asp:Button ID="Button4" runat="server" Text="选定该客户" OnClick="Button4_Click" Height="48px" Width="86px" /></td></tr>
     </table>

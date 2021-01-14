@@ -1,0 +1,44 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="kunming_MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" type="text/css" href="../MainStyle.css" />
+    <style type="text/css">
+        li{
+            list-style-type:none;
+           float:left;
+           margin:0 15px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!--导航-->
+        <div>
+            <ul>
+                 <li><a href="Default.aspx">数据概览</a></li>
+                <li><a href="Product.aspx">新建产品名字</a></li>
+                <li><a href="AddOrders.aspx">新建内部订单</a></li>
+                <li><a href="白药订单.aspx">新建白药订单</a></li>
+                <li><a href="Produce.aspx">录入生产数据</a></li>
+                <li><a href="Translate.aspx">录入送货</a></li>
+                <li><a href="白药入库.aspx">白药入库</a></li>
+                <li><a href="guanzhuang.aspx">录入灌装</a></li>
+                <li><a href="不合格品.aspx">不合格品</a></li>
+            </ul>
+            
+        </div>
+        <div style="clear:both;"></div><hr />
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>
