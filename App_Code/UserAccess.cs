@@ -6,17 +6,15 @@ using System.Data;
 using System.Data.SqlClient;
 
 /// <summary>
-/// UserAccess 的摘要说明
+/// userAccess 的摘要说明
 /// </summary>
-/// 
-public class UserAccess { 
-
-    public UserAccess()
+public class userAccess
+{
+    public userAccess()
     {
         //
         // TODO: 在此处添加构造函数逻辑
         //
-
     }
     public bool getUserAccess(string ss, int i)
     {
@@ -61,4 +59,5 @@ public class UserAccess {
         return false;
 
     }
+
 }

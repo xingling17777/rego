@@ -23,13 +23,13 @@
         <div>
             <ul>
                  <li><a href="Default.aspx">数据概览</a></li>
-                <li><a href="Product.aspx">新建产品名字</a></li>
-                <li><a href="AddOrders.aspx">新建内部订单</a></li>
-                <li><a href="白药订单.aspx">新建白药订单</a></li>
-                <li><a href="Produce.aspx">录入生产数据</a></li>
-                <li><a href="Translate.aspx">录入送货</a></li>
-                <li><a href="白药入库.aspx">白药入库</a></li>
-                <li><a href="guanzhuang.aspx">录入灌装</a></li>
+                <li><a href="Product.aspx">1.新建产品名字→</a></li>
+                <li><a href="AddOrders.aspx">2.新建内部订单→</a></li>
+                <li><a href="白药订单.aspx">3.新建白药订单→</a></li>
+                <li><a href="Produce.aspx">4.录入生产数据→</a></li>
+                <li><a href="Translate.aspx">5.录入送货→</a></li>
+                <li><a href="白药入库.aspx">6.白药入库→</a></li>
+                <li><a href="guanzhuang.aspx">7.录入灌装</a></li>
                 <li><a href="不合格品.aspx">不合格品</a></li>
             </ul>
             

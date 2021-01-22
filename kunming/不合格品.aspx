@@ -5,9 +5,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
     <table>
         <tr><td>订单号</td><td>
-            <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList></td></tr>
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True"></asp:DropDownList></td></tr>
         <tr><td>产生环节</td><td>
-            <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
+            <asp:RadioButtonList ID="RadioButtonList1" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged" AutoPostBack="True">
                 <asp:ListItem>生产</asp:ListItem>
                 <asp:ListItem>送货</asp:ListItem>
                 <asp:ListItem>入库</asp:ListItem>

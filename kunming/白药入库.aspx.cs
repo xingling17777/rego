@@ -14,7 +14,7 @@ public partial class kunming_Translate : System.Web.UI.Page
     {
         if(!IsPostBack)
         {
-            //new userAccess().getUserAccess("云南白药产品入库", 1);
+           new userAccess().getUserAccess("云南白药产品入库", 1);
         }
     }
 

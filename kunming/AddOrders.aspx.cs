@@ -13,7 +13,7 @@ public partial class kunming_AddOrders : System.Web.UI.Page
     {
 if(!IsPostBack)
         {
-            //new userAccess().getUserAccess("云南白药内部订单", 1);
+            new userAccess().getUserAccess("云南白药内部订单", 1);
             Calendar1.SelectedDate = DateTime.Now;
             SqlConnection conn = new DataBase().getSqlConnection();
             SqlCommand cmd = conn.CreateCommand();

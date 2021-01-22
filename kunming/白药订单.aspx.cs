@@ -13,7 +13,7 @@ public partial class kunming_白药订单 : System.Web.UI.Page
     {
         if (!IsPostBack)
         {
-            //new userAccess().getUserAccess("云南白药客户订单", 1);
+            new userAccess().getUserAccess("云南白药客户订单", 1);
             SqlConnection conn = new DataBase().getSqlConnection();
             SqlCommand cmd = conn.CreateCommand();
             cmd.CommandText = "select * from 云南白药订单 order by id desc";

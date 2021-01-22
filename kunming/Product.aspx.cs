@@ -7,11 +7,12 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 
+
 public partial class kunming_Product : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
-    {      
-           new UserAccess().getUserAccess("云南白药产品名称",1);
+    {
+                   new userAccess().getUserAccess("云南白药产品名称",1);
     }
 
     protected void Button1_Click(object sender, EventArgs e)

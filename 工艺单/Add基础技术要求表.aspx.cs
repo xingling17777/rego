@@ -10,7 +10,7 @@ public partial class 工艺单_Add基础技术要求表 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (new UserAccess().getUserAccess("基础技术要求表", 1))
+        if (new userAccess().getUserAccess("基础技术要求表", 1))
         {
             DropDownList1.Items.Clear();
             SqlConnection conn = new DataBase().getSqlConnection();
